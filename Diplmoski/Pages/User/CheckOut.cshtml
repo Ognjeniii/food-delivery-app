@@ -1,0 +1,103 @@
+﻿@page
+@model Diplomski.Pages.User.CheckOutModel
+@{
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        background-color: #E4EFE7;
+    }
+        
+    h1, h4{
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .moj-cont{
+        margin-left: 300px;
+        background-color: white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        min-height: 400px;
+        border-radius: 20px;
+        width: 700px;
+    }
+
+    .porudzbina{
+        margin: 30px 40px 0 40px;
+        font-family: 'Poppins', sans-serif;
+    }    
+
+    .foodType{
+        padding-right: 5px;
+        color: #767676;
+    }
+
+    .foodName{
+        padding-left: 5px;
+        font-weight: bold;
+    }
+
+    .racun{
+        font-weight: bold;
+        font-size: 140%;
+    }
+
+    .ukupno-racun{
+        padding-top: 40px;
+    }
+
+    .nista{
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 150px; 
+        color: red; 
+    }
+
+</style>
+
+<h1 class="text-center m-5">Vaša porudžbina</h1>
+
+<div class="container">
+    <div class="moj-cont">
+        @if (Model.orders.Count > 0)
+        {
+            <h4 class="text-center p-3">Da li želite da nastavite?</h4>
+        }
+        <div class="porudzbina">
+
+            @if(Model.orders.Count > 0)
+            {
+                @for(var i = 0; i < Model.orders.Count; i++)
+                {
+                    <div class="d-flex info">
+                        <p class="foodType">@Model.foodType[i] </p> - 
+                        <p class="foodName"> @Model.orders[i]</p>
+                        <p class="restaurant">...............@Model.restaurant[i]</p>
+                    </div>
+                }
+                <div class="ukupno-racun">
+                    <p>Ukupno:</p>
+                    <p class="racun">@Model.bill RSD</p>
+                </div>
+
+                <div class="dugmici d-flex justify-content-between mb-3 pb-3">
+                    
+                    <input type="button" class="btn btn-outline-dark" value="Nastavi sa plaćanjem" />
+                    
+                    <form method="post" action="/User/Checkout">
+                        <button type="button" class="btn btn-outline-danger">Otkaži</button>
+                    </form>
+                </div>
+            }
+            @if (Model.orders.Count == 0)
+            {
+                <div class="text-center">
+                    <h4 class="nista text-center">Nemate ništa u korpi.</h4>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

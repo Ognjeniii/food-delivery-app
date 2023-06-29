@@ -1,0 +1,150 @@
+﻿@page
+@model Diplomski.Pages.User.AllFoodModel
+@{
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        background-color: #E4EFE7;
+    }
+        
+    h1{
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    h4{
+        padding: 30px 0 10px 0;
+        font-family: 'Poppins', Arial;
+        font-weight: bold;
+    }
+
+    .dugme{
+        margin-left: 15px;
+    }
+
+    .jelo{
+        width: 1000px;
+        height: 120px;
+        margin: 15px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    .restoran{
+        padding:10px 0 0 20px;
+        width: 100px;
+        font-family: 'Poppins', Arial;
+        font-weight: bold;
+        font-size:140%;
+    }
+
+    .restoran-div{
+        width: 180px;
+    }
+    
+    .info{
+        width: 700px;
+    }
+
+    .foodType {
+        padding:65px 10px 0 0;
+        color: #767676;
+        font-family: 'Poppins', Arial;
+        font-size: 110%;
+    }
+
+    .foodName{
+        padding: 65px 10px 0 0;
+        font-family: 'Poppins', Arial;
+        font-size: 110%;
+        font-weight: bold;
+    }
+
+    .foodName-div{
+        width: 150px;
+    }
+
+    .quantity {
+        padding: 58px 10px 0 0;
+        font-family: 'Poppins', Arial;
+        font-size: 130%;
+    }
+
+    .price{
+        padding: 65px 10px 0 0;
+        font-family: 'Poppins', Arial;
+        color: #767676;
+    }
+
+    .description{
+        padding:10px 10px 0 0;
+        font-family: 'Poppins', Arial;
+        color: #767676;
+        font-size: 70%;
+    }
+
+    .description-div{
+        padding-left: 20px;
+        width: 200px;
+    }
+
+    .dugme-naruci{
+        margin-top: 40px;
+    }
+   
+
+</style>
+
+<h1 class="text-center m-4">Na pravom si mestu</h1>
+
+<div class="container">
+    <div>
+        <h4 class="">Šta ti se jede?</h4>
+        <form asp-controller="/User/AllFood" asp-action="/User/AllFood" method="get" class="d-flex">
+            <input type="text" name="searchString" class="form-control" style="width:300px;" placeholder="pica/pasta/salata..." />
+            <button type="submit" class="btn btn-outline-dark dugme">Pretraži</button>
+        </form>
+    </div>
+    <div class="hrana-container">
+        @foreach(var item in Model.FoodList)
+        {
+            <div class="jelo d-flex">
+                <div class="restoran-div">
+                    <p class="restoran">@item.Restaurant</p>
+                </div>
+                <div class="info d-flex">
+                    <p class="foodType">@item.FoodType</p>
+                    <div class="foodName-div">
+                        <p class="foodName">@item.FoodName</p>
+                    </div>
+                    <p class="quantity">@item.Quantity</p>
+                    <p class="price">@item.Price RSD</p>
+                    <div class="description-div">
+                        <p class="description">@item.Description</p>
+                    </div>
+                </div>
+                <div>
+                    <form method="post">
+                        <input type="hidden" value="@item.Id" asp-for="Food.Id" />
+                        <input type="submit" class="btn btn-danger dugme-naruci" value="NARUČI!" />
+                    </form>
+                </div>
+            </div>
+        }   
+    </div>
+
+    @*Ovde ne salje za login*@
+    <p>@Model.sum</p>
+    @if(Model.foodNames != null)
+    {
+        @foreach(var item in Model.foodNames)
+        {
+            <p>@item</p>
+        }
+    }
+</div>

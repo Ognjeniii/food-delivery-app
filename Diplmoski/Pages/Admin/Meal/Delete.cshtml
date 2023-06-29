@@ -1,0 +1,90 @@
+﻿@page
+@model Diplomski.Pages.Admin.Meal.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    h1{
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+        background-color: #E4EFE7;
+    }
+
+    .veliki-cont{
+        border: 3px solid #206A5D; 
+        width: 1000px;
+        margin-left: 245px;
+        border-radius: 20px;
+    }
+
+    .moj-cont{
+        padding: 0 0 30px 100px;
+    }
+
+</style>
+<a asp-page="./Index"><img src="~/images/back1.png" class="img-fluid m-3" style="width:40px;" /></a>
+
+<div class="veliki-cont">
+
+    <h1 class="text-center m-5 text-decoration-underline">Brisanje</h1>
+
+    <div class="container moj-cont">
+        <h3 class="m-5">Da li ste sigurni da želite da obrišete ovo jelo?</h3>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.FoodName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.FoodName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.FoodType)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.FoodType)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.Quantity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.Quantity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.Restaurant)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.Restaurant)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Food.RestorauntLocation)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Food.RestorauntLocation)
+            </dd>
+        </dl>
+    
+        <form method="post">
+            <input type="hidden" asp-for="Food.Id" />
+            <input type="submit" value="Obriši" class="btn btn-danger" />
+        </form>
+    </div>
+</div>

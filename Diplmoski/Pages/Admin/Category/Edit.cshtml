@@ -1,0 +1,71 @@
+﻿@page
+@model Diplomski.Pages.Admin.Category.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+        background-color: #E4EFE7;
+    }
+
+    .bg{
+        z-index: -1;
+    }
+
+    .moj-cont{
+        padding:50px 0 0 300px;
+    }
+
+    .form-control{
+        width: 400px;
+    }
+
+    .veliki-cont{
+        margin-left: 245px;
+        width: 1000px;
+        border: 2px solid #206A5D;
+        padding-bottom: 50px;
+        border-radius: 20px;
+    }
+</style>
+
+<div>
+    <a asp-page="Index"><img src="~/images/back1.png" class="img-fluid m-3" style="width:35px;" /></a>
+</div>
+<div class="veliki-cont">
+    <h1 class="text-center m-5 text-decoration-underline">Izmeni</h1>
+
+    <div class="container moj-cont">
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="FoodCategory.Id" />
+                    <div class="form-group">
+                        <label asp-for="FoodCategory.FoodCategoryName" class="control-label mb-3"></label>
+                        <input asp-for="FoodCategory.FoodCategoryName" class="form-control mb-3" />
+                        <span asp-validation-for="FoodCategory.FoodCategoryName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Sačuvaj promene" class="btn btn-outline-dark" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

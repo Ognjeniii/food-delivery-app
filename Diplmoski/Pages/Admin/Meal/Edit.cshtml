@@ -1,0 +1,96 @@
+﻿@page
+@model Diplomski.Pages.Admin.Meal.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+<style>
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+        background-color: #E4EFE7;
+    }
+
+    .moj-cont {
+        border: 3px solid #206A5D;
+        border-radius: 10px;
+    }
+
+    .slika {
+        margin-top: 50px;
+    }
+</style>
+
+<div>
+    <a asp-page="Index"><img src="~/images/back1.png" class="img-fluid m-3" style="width:35px;" /></a>
+</div>
+
+<h1 class="text-center mb-5 text-decoration-underline">Izmeni jelo</h1>
+
+<div class="container mt-3 moj-cont">
+    <div class="row m-3">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Food.Id" />
+                <div class="form-group">
+                    <label asp-for="Food.FoodName" class="control-label"></label>
+                    <input asp-for="Food.FoodName" class="form-control" />
+                    <span asp-validation-for="Food.FoodName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Food.FoodType" class="control-label"></label>
+                    <select asp-for="Food.FoodType" asp-items="Model.GetFoodCategories" class="form-control">
+                        <option selected></option>
+                    </select>
+                    <span asp-validation-for="Food.FoodType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Food.Quantity" class="control-label"></label>
+                    <input asp-for="Food.Quantity" class="form-control" />
+                    <span asp-validation-for="Food.Quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Food.Price" class="control-label"></label>
+                    <input asp-for="Food.Price" class="form-control" />
+                    <span asp-validation-for="Food.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Food.Description" class="control-label"></label>
+                    <textarea asp-for="Food.Description" class="form-control"></textarea>
+                    <span asp-validation-for="Food.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Food.Restaurant" class="control-label"></label>
+                    <input asp-for="Food.Restaurant" class="form-control" />
+                    <span asp-validation-for="Food.Restaurant" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Food.RestorauntLocation" class="control-label"></label>
+                    <input asp-for="Food.RestorauntLocation" class="form-control" />
+                    <span asp-validation-for="Food.RestorauntLocation" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Sačuvaj promene" class="btn btn-outline-dark mt-2" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <img src="~/images/foodProducts.jpg" class="img-fluid opacity-75 slika" />
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

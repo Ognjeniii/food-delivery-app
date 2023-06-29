@@ -1,0 +1,97 @@
+﻿@page
+@model Diplomski.Pages.Admin.Meal.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        background-color: #E4EFE7;
+    }
+
+    h1{
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: underline;
+    }
+
+    .form-control{
+        width: 500px;
+    }
+
+    .dugme-filtriraj{
+        margin-left: 10px;
+    }
+
+</style>
+
+<h1 class="text-center m-5">Sva jela</h1>
+
+<div class="container">
+    <div class="d-flex justify-content-md-between">
+
+        <form asp-controller="Index" asp-action="Index" method="get" class="d-flex">
+            <input type="text" name="searchString" class="form-control mb-3 mt-5" placeholder="Ime jela/Kategorija/Količina/Restoran"/>
+            <input type="submit" class="btn btn-outline-dark mb-3 mt-5 dugme-filtriraj" value="Filtriraj"/>
+        </form>
+
+        <p>
+            <a asp-page="Create" class="btn btn-outline-dark mt-5">Napravi novo jelo</a>
+        </p>
+    </div>
+    <table class="table table-striped table-dark table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.FoodNameSort">
+                        @Html.DisplayNameFor(model => model.Food[0].FoodName)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.FoodTypeSort">
+                        @Html.DisplayNameFor(model => model.Food[0].FoodType)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.QuantitySort">
+                        @Html.DisplayNameFor(model => model.Food[0].Quantity)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.RestaurantSort">
+                        @Html.DisplayNameFor(model => model.Food[0].Restaurant)
+                    </a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Food) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Restaurant)
+                </td>
+            
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id"><img src="~/images/edit.png" style="width:30px;"/></a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id"><img src="~/images/info.png" style="width:30px;" /></a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id"><img src="~/images/delete.png" style="width:30px;" /></a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
+</div>

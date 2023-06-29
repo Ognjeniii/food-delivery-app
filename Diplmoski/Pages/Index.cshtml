@@ -1,0 +1,371 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+<style>
+    body{
+        margin:0;
+        overflow-x:hidden;
+    }
+    .cont-1{
+        height: 670px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #E4EFE7;
+    }
+
+    .cont-2{
+        height: 420px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #213363;
+    }
+
+    .cont-3{
+        height: 540px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #E4EFE7;
+    }
+
+
+    /*CONTAINER 1*/
+    .cont-1-naslovi{
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 80px;
+        padding-left: 80px;
+    }
+
+    .naslov-1{
+        font-size: 4em;
+    }
+    
+    .naslov-2 {
+        font-size:2em;
+    }
+
+    .cont-1-pretraga{
+        margin-top: 80px;
+        z-index: 1;
+    }
+    .pretraga-tekst{
+        font-family: 'Montserrat', sans-serif;
+        z-index: 1;
+    }
+    
+    .polje-za-pretragu{
+        width: 450px;
+        height: 40px;
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+    .dugme{
+        margin-left: 371px; 
+        
+    }
+
+    .restorani{
+        margin-top: 20px;
+        width: 450px;
+        height: auto;
+        background-color: white;
+        border: 2px solid black;
+        z-index: 1;
+
+        max-height: 400px;
+    }
+
+    .slike-hrane{
+        padding-top:123px;
+    }
+
+    .slike-hrane p{
+        padding-right: 20px;
+        padding-bottom: 5px;
+    }
+
+    .slike{
+        margin-right: 30px;
+        width: 170px;
+        border-radius: 5%;
+        transition: 0.5s ease;
+        border: 2px solid #aaa;
+    }
+
+    .slike:hover{
+        -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        transform: scale(1.15);
+        transition: 1s ease;
+        cursor: pointer;
+    }
+
+    .cont-1-pozadina{
+        position: absolute;
+        z-index: -2;
+        width: 503.5px;
+        top: 64.5px;
+        right: 0px;
+        opacity: 50%;
+    }
+
+    .cont-1-mali-tekst{
+        font-family: 'Poppins', sans-serif;
+        width:580px;
+        color: #767676;
+        padding-top: 50px;
+    }
+
+    .bold{
+        color: #333;
+    }
+
+    .restorani-items{
+        width:100%;
+        height: 35px;
+        background-color: #fff;
+        border: 0.5px solid black;
+        /*border-radius: 6px;*/
+    }
+
+    .ime-restorana{
+        padding-left: 18px;
+        font-weight: bold;
+    }
+
+    .ime-restorana:hover{
+        text-decoration: underline;
+    }
+
+    .lokacija-restorana{
+        color: #767676;
+    }
+
+    /*CONTAINER 2*/
+    .cont-2-naslov{
+        padding-top: 10px;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+    }
+
+    table th{
+        border: 0;
+    }
+    table td{
+        border: 0;
+    }
+
+    .col{
+        padding-top: 12px;
+    }
+
+    .col:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .cont-2-redovi{
+        color: #E4EFE7;
+    }
+
+    /* CONTAINER 3 */
+    h1{
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .div-naslov{
+        text-align: end;
+        padding: 40px 60px 0 0;
+    }
+
+    .tekst-preuzimanje{
+        padding: 50px 60px 0 0;
+        
+    }
+
+    .cont-3-tekst{
+        color: #767676;
+        width: 400px;
+        height: 250px;
+        background-color: rgba(255,255,255,0.6);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    .footer{
+        width: 100%;
+        height:50px;
+
+    }
+
+    
+    
+</style>
+
+<div class="cont-1">
+    <div class="row">
+        <div class="cont-1-naslovi col-md-6">
+            <h1 class="naslov-1">Gladan si?</h1>
+            <h4 class="naslov-2 text-decoration-underline">Mrzi te da spremaš?</h4>
+            <div class="cont-1-mali-tekst">
+                <p>
+                    Ono što nas izdvaja na tržištu jesu <b class="bold">brzina</b> i <b class="bold">preciznost</b>. Naši profesionalni
+                    dostavljači donose vašu hranu toliko brzu da ne stignete da otključate vrata.
+                    Dostavljamo hranu na teritoriji celog Beograda, a ponekad i šire.</p>
+            </div>
+            <div class="slike-hrane d-flex text-center">
+                <div>
+                    <p class="m-0">Palačinke?</p>
+                    <a href="User/Pancakes"><img src="images/pancake.jpg" class="img-fluid slike" /></a>
+                </div>
+                <div>
+                    <p class="m-0">Burgeri?</p>
+                    <a href="/User/Burgers"><img src="images/burger.jpg" class="img-fluid slike" /></a>
+                </div>
+                <div>
+                    <p class="m-0">Pice?</p>
+                    <a href="/User/Pizzas"><img src="images/pizza.jpg" class="img-fluid slike" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="cont-1-pretraga col-md-6">
+            <form asp-controller="Index" asp-action="Index" method="get">
+                <h5 class="mb-3 pretraga-tekst">Pretražite restorane u tvojoj blizini...</h5>
+               <input type="text" class="polje-za-pretragu mb-3" name="searchString" placeholder="Unesite lokaciju na kojoj se nalazite"/><br />
+               <input type="submit" value="Pretraži" class="btn btn-outline-dark dugme" />
+            </form>
+            <div class="restorani">
+                @if (Model.FoodList != null)
+                {
+                    @foreach (var item in Model.FoodList)
+                    {
+                        <div class="restorani-items">
+                            <a class="text-dark text-decoration-none" href="#">
+                                <span class="ime-restorana">@item.Restaurant</span>
+                                <span class="lokacija-restorana">@item.RestorauntLocation</span>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+            <img src="~/images/pozadina4.jpg" class="img-fluid cont-1-pozadina" />
+        </div>
+    </div>
+</div>
+
+<div class="cont-2">
+    @*Ovde bih trebao da implementiram da se na klik mesta može videti restorani u toj blizini*@
+    <h1 class="text-center p-3 cont-2-naslov">
+        Dostava hrane
+    </h1>
+    <div class="container cont-2-redovi">
+        <div class="row">
+            <div class="col">Banovo brdo</div>
+            <div class="col">Dorćol</div>
+            <div class="col">Palilula</div>
+            <div class="col">Karaburma</div>
+            <div class="col">Senjak</div>
+            <div class="col">Konjarnik</div>
+        </div>
+        <div class="row">
+            <div class="col">Banjica</div>
+            <div class="col">Stari Košutnjak</div>
+            <div class="col">Cerak</div>
+            <div class="col">Labudovo brdo</div>
+            <div class="col">Železnik</div>
+            <div class="col">Krnjača</div>
+        </div>
+        <div class="row">
+            <div class="col">Borča</div>
+            <div class="col">Blokovi</div>
+            <div class="col">Bežanija</div>
+            <div class="col">Galenika</div>
+            <div class="col">Altina</div>
+            <div class="col">Batajnica</div>
+        </div>
+        <div class="row">
+            <div class="col">Stari grad</div>
+            <div class="col">Vračar</div>
+            <div class="col">Mirijevo</div>
+            <div class="col">Medaković</div>
+            <div class="col">Žarkovo</div>
+            <div class="col">Petlovo brdo</div>
+        </div>
+        <div class="row">
+            <div class="col">Vidikovac</div>
+            <div class="col">Sremčica</div>
+            <div class="col">Ledine</div>
+            <div class="col">Jakovo</div>
+            <div class="col">Fontana</div>
+            <div class="col">Staro sajmište</div>
+        </div>
+        <div class="row">
+            <div class="col">Beograd na vodi</div>
+            <div class="col">Crveni krst</div>
+            <div class="col">Autokomanda</div>
+            <div class="col">Kumodraž</div>
+            <div class="col">Topčider</div>
+            <div class="col">Čukarička padina</div>
+        </div>
+        <div class="row">
+            <div class="col">Rakovica</div>
+            <div class="col">Bele Vode</div>
+            <div class="col">Surčin</div>
+            <div class="col">Kotež</div>
+            <div class="col">Dedinje</div>
+            <div class="col">Zvezdara</div>
+        </div>
+        <div class="row">
+            <div class="col">Kanarevo brdo</div>
+            <div class="col">Kneževac</div>
+            <div class="col">Barajevo</div>
+            <div class="col">Dobanovci</div>
+            <div class="col">Padinska skela</div>
+            <div class="col">Mali mokri lug</div>
+        </div>
+    </div>
+</div>
+
+<div class="cont-3">
+    <div class="div-naslov">
+        <h1 class="cont-3-naslov">Preuzmi <span class="text-decoration-underline">strava</span> mobilnu aplikaciju!</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/images/smartphone.png" class="img-fluid" style="width:350px;" />
+            </div>
+            <div class="col-md-4 tekst-preuzimanje">
+                <div class="cont-3-tekst">
+                    <p>Preuzimanjem naše aplikacije ostvarujete mogućnost da osvojite razne popuste i druge pogodnosti.
+                        U aplikaciji postoji mobilna igrica pomoću koje se takmičite sa drugim korisnicima i tako osvajate poene,
+                        koji predstavljaju popust za dostavu. 
+                        <br />
+                        Mesta za igrače su ograničena, zato požuri!
+                    </p>
+                    @*<img src="~/images/instagram.svg" style="width:35px;" class="p-2" />
+                    <img src="~/images/twitter.svg" style="width:35px;" class="p-2" />*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-5">
+                    <button class="btn btn-outline-dark">Preuzmi <img src="~/images/apple-logo.png" style="width:28px;" /></button>
+                    <button class="btn btn-outline-dark m-2">Preuzmi <img src="~/images/google-play.png" style="width:28px;" /></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-dark footer text-center">
+    <p class="text-muted pt-2">&copy; 2023 - Aplikacija za dostavu hrane</p>
+</div>

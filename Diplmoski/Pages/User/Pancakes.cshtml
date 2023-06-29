@@ -1,0 +1,139 @@
+﻿@page
+@model Diplomski.Pages.User.PancakesModel
+@{
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+    body {
+        overflow-x: hidden;
+        background-color: #E4EFE7
+    }
+
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 50px;
+    }
+
+    .back {
+        width: 50px;
+        padding: 10px 0 0 10px;
+    }
+
+    .pozadina-pice {
+        position: absolute;
+        z-index: -1;
+        top: 52px;
+        right: 0;
+        opacity: 60%;
+    }
+
+    .palacinka {
+        background-color: #fff;
+        width: 80%;
+        height: 95px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        border: 2px solid black;
+        font-family: 'Poppins', Arial;
+    }
+
+    .naziv-restorana {
+        width: 250px;
+    }
+
+    .restaurant {
+        color: black;
+        font-family: 'Poppins', Arial;
+        font-size: 160%;
+        font-weight: bold;
+        padding: 0 0 0 15px;
+    }
+
+    
+
+    .info {
+        width: 650px;
+    }
+
+    .foodType {
+        color: #777B7E;
+        padding: 55px 10px 0 0;
+        font-size: 110%;
+    }
+
+    .foodName {
+        font-weight: bold;
+        padding: 29px 10px 0 0;
+        font-size: 110%;
+        color: black;
+    }
+
+    .foodName-div{
+        width: 150px;
+    }
+
+    .quantity {
+        padding: 50px 10px 0 0;
+        font-size: 150%;
+    }
+
+    .foodPrice {
+        padding: 58px 0 0 20px;
+        color: #777B7E;
+    }
+
+    .foodInfo {
+        width: 200px;
+        color: #48494B;
+        font-size: 80%;
+        padding: 5px 0 0 20px;
+    }
+
+    .dugme-div {
+        text-align: right;
+        padding-top: 24px;
+    }
+
+    .dugme {
+        height: 45px;
+    }
+
+</style>
+
+<a href="/Index"><img src="~/images/back1.png" class="img-fluid back" /></a>
+<h1 class="text-center m-4 text-decoration-underline">Palačinke</h1>
+
+
+<div class="container">
+    @foreach (var item in Model.FoodList)
+    {
+        <div class="palacinka d-flex shadow">
+            <div class="naziv-restorana">
+                <p class="restaurant">@item.Restaurant</p>
+            </div>
+            <div class="info d-flex">
+                <p class="foodType">@item.FoodType:</p>
+                <div class="foodName-div">
+                    <p class="foodName">@item.FoodName</p>
+                </div>
+                <p class="quantity">@item.Quantity</p>
+                <p class="foodPrice">@item.Price RSD</p>
+                <p class="foodInfo">@item.Description</p>
+            </div>
+            <div class="dugme-div">
+                <form method="post">
+                    <input type="hidden" value="@item.Id" asp-for="Food.Id" />
+                    <input type="submit" class="btn btn-danger dugme" value="NARUČI!" />
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+<img src="~/images/pozadinaZaPice.jpg" class="img-fluid pozadina-pice" />
