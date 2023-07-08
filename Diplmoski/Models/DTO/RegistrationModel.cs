@@ -21,7 +21,7 @@ namespace Diplomski.Models.DTO
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Ponovljena lozinka je obavezno polje pri registraciji.")]
-        [Compare("Password")] // ovde treba da se promeni poruka u slucaju da se loznike ne podudaraju.
+        [Compare("Password")] 
         public string PasswordConfirmed { get; set; }
 
         public string? Role { get; set; }

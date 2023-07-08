@@ -20,7 +20,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// ovde obrati paznju!
+
 builder.Services.ConfigureApplicationCookie(options =>
 options.LoginPath = "/UserAuthentication/Login");
 

@@ -23,6 +23,7 @@ namespace Diplomski.Models
         public string Quantity { get; set; }
 
         [Display(Name = "Cena")]
+        [RegularExpression("\\d+", ErrorMessage = "Ovo polje prihvata samo bojeve.")]
         [Required(ErrorMessage = "Morate da unesete cenu proizvoda! Ovo polje je obavezno")]
         public double Price { get; set; }
 
